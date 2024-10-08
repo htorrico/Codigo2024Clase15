@@ -28,13 +28,18 @@ empleados.Add(desarollador);
 
 foreach (var empleado in empleados)
 {
-    //empleado.CalcularSueldo();
+    empleado.CalcularSueldo();
     empleado.MostrarDetalle();
-    //if (empleado is ISueldoBonificable bonificable)
-    //{
-    //    Console.WriteLine($"Bonificación: {bonificable.CalcularBonificacion()}");
-    //}
-    //Calcular Bonificacion
+   
+    if (empleado is ISueldoBonificable empleadoBonificable)
+    {
+        empleadoBonificable.CalcularBonificacion();
+    }
+    if (empleado is IDescuentoImpuesto empleadoDescuento)
+    {
+        empleadoDescuento.DescontarSueldo();
+    }
+
 }
 
 Console.Read();
